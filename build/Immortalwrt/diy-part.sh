@@ -42,8 +42,7 @@ export Customized_Information="$(TZ=UTC-8 date "+%Y.%m.%d")"  # 个性签名,你
 
 # 更换固件内核
 export Replace_Kernel="0"                    # 更换内核版本,在对应源码的[target/linux/架构]查看patches-x.x,看看x.x有啥就有啥内核了(填入内核x.x版本号,填0为不作修改)
-# 修改联发科芯片路由内核为6.1
-sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=6.1/g' target/linux/mediatek/Makefile
+
 
 
 # 设置免密码登录(个别源码本身就没密码的)
