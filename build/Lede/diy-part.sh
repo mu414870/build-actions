@@ -4,8 +4,17 @@
 # 自行拉取插件之前请SSH连接进入固件配置里面确认过没有你要的插件再单独拉取你需要的插件
 # 不要一下就拉取别人一个插件包N多插件的，多了没用，增加编译错误，自己需要的才好
 
-cd lede
-sed -i '$a src-git NueXini_Packages https://github.com/NueXini/NueXini_Packages.git' feeds.conf.default
+file_path=$(find / -name "feeds.conf.default" 2>/dev/null)
+# 检查是否找到文件
+if [ -n "$file_path" ]; then
+    echo "找到文件: $file_path"
+    # 对找到的文件执行sed命令
+    sed -i '$a src-git NueXini_Packages https://github.com/NueXini/NueXini_Packages.git' "$file_path"
+    echo "已对文件执行sed命令"
+else
+    echo "未找到文件feeds.conf.default"
+fi
+
 ./scripts/feeds update -a && ./scripts/feeds install -a
 
 # 后台IP设置
