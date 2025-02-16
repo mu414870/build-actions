@@ -14,8 +14,11 @@
 # else
 #     echo "未找到文件feeds.conf.default"
 # fi
-sed -i '$a src-git NueXini_Packages https://github.com/NueXini/NueXini_Packages.git' feeds.conf.default
-./scripts/feeds update -a && ./scripts/feeds install -a
+# sed -i '$a src-git NueXini_Packages https://github.com/NueXini/NueXini_Packages.git' feeds.conf.default
+# ./scripts/feeds update -a && ./scripts/feeds install -a
+# 新增联发科芯片使用Kernel 内核
+echo '修改联发科芯片6.6-kernel'
+sed -i 's/PATCHVER:=6.1/PATCHVER:=6.6/g' target/linux/mediatek/Makefile
 
 # 后台IP设置
 export Ipv4_ipaddr="192.168.2.2"            # 修改openwrt后台地址(填0为关闭)
