@@ -16,10 +16,11 @@ on:
       REPO_BRANCH:
         description: '天灵源码-请选择分支'
         required: true
-        default: 'openwrt-24.10'
+        default: 'openwrt-25.12'
         type: choice
         options:
           - 'openwrt-24.10'
+          - 'openwrt-25.12'
           - 'openwrt-23.05'
           - 'master'
       CONFIG_FILE:
